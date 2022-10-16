@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <link rel="icon" href="data:,">
+            <title>Embaixada de Angola na Alemanha - Agendamentos</title>
+    </head>
+
+    <section layout:fragment="conteudo" style="padding-top: 4%">      
+        <div class="container" style="padding-bottom: 3%; margin-right: 18%">
+            <div class= "row" >                                                
+                <div class="col-md-6" >
+                    <img th:src="@{/images/angola10.jpg}"  height="50%" width="100%" style= "border-radius: 2%; margin-top: 170px;"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <article class="card-body">
+                            <form action="#" th:action="@{/registrar}" method="post" th:object="${user}">                    
+                                <h2 style="text-align: center">Registra-se</h2>
+                                <h6 class="card-title mb-3 mt-1 text-center">Cria a sua conta. É gratis e rápido.</h6>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Primeiro Nome</label>
+                                            <input type="text" class="form-control" name="primeiroNome" placeholder="Primeiro Nome" required="required">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Segundo Nome</label>
+                                            <input type="text" class="form-control" name="segundoNome" placeholder="Segundo Nome" required="required"> 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>E-mail</label>
+                                            <input type="email" class="form-control" name="email" placeholder="E-mail" required="required">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Telefone</label>
+                                            <input type="text" class="form-control" name="numeroTelefone" placeholder="Telefone" required="required"> 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Senha</label>
+                                            <input type="password" class="form-control" name="password" placeholder="*********" required="required">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Confirme a senha</label>
+                                            <input type="password" class="form-control" name="confirm_password" placeholder="*********" required="required">
+                                        </div>
+                                    </div>                                                
+                                </div>
+
+                                <div class="form-group mt-5">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Estado</label>
+                                            <select class="form-control" name="hora" id="hora">
+                                                <option value="volvo">Berlin</option>
+                                                <option value="saab">NRW</option>
+                                                <option value="opel">Hessen</option>
+                                                <option value="audi">Munchen</option>
+                                                <option value="volvo">Bavaria</option>
+                                                <option value="saab">Leipzig</option>
+                                            </select>                                                                                        
+                                        </div>                                        
+                                        <div class="col-md-6">
+                                            <label>Cidade</label>
+                                            <input type="text" class="form-control" name="cidade" placeholder="Cidade" required="required"> 
+                                        </div>
+
+                                    </div>                                                
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <label>Endereco</label>
+                                            <input type="text" class="form-control" name="endereco" placeholder="Endereco" required="required">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Codigo Postal</label>
+                                            <input type="text" class="form-control" name="codigoPostal" placeholder="Codigo Postal" required="required"> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-check-label"><input type="checkbox" required="required"> Aceito os <a href="#">Termos de uso</a> &amp; <a href="#">Politicas de Privacidade.</a></label>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary" style="width: 240px;">Registrar</button>
+                                </div> 
+                                <h6 class="card-title mb-4 mt-1 text-center">Já tem uma conta? <a href="/login" class="text-center">Faca Login.</a> </h6>                                    
+                            </form>                            
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</html>

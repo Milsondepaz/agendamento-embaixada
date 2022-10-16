@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <link rel="icon" href="data:,">
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta http-equiv="x-ua-compatible" content="ie=edge">
+                    <title>Embaixada de Angola na Alemanha - Agendamentos</title>
+
+                    <!--
+                    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+                    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/> 
+                    -->
+                    
+                    <link th:rel="stylesheet" th:href="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css}"/>
+
+                    <link rel="stylesheet" type="text/css" href="@{/css/bootstrap-datepicker.standalone.css}"/>
+                    <!--<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />-->
+                    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+                    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+                    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.1.0/css/all.css} "/>
+
+
+                    </head>
+                    <body>
+
+                        <header th:replace="cabecalho"></header>
+                        <section layout:fragment="conteudo"></section>
+                        <footer th:replace="rodape"></footer>
+
+                        <script th:src="@{/js/jquery-2.1.4.min.js}"></script>
+                        <script th:src="@{/js/bootstrap.min.js}"></script>
+                        <script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+                        <script th:src="@{/js/bootstrap-datepicker.pt-BR.min.js}"></script>
+                        <script th:src="@{/js/bootstrap-datepicker.en-GB.min.js}"></script>
+                        <script th:src="@{/js/jquery.maskMoney.min.js}"></script>
+                        <script th:src="@{/js/cobranca.js}"></script>
+
+                    </body>
+                    </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <link rel="icon" href="data:,">
+            <title>Embaixada de Angola na Alemanha - Agendamentos</title>
+    </head>
+    <section layout:fragment="conteudo">      
+        <div class="container" style="padding-top: 6%; padding-bottom: 7%">         
+            <div class="row">                                                
+                <div class="col-md-6">
+                    <img th:src="@{/images/angola10.jpg}"  height="100%" width="100%" style= " border-radius: 2%"/>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="padding-top: 26px">
+                        <article class="card-body">
+                            <h4 style="text-align: center">Faca Login</h4>
+                            <form action="#" th:action="@{/}" method="post" th:object="${user}">
+                                <div class="form-group">
+                                    <label>Seu e-mail</label>
+                                    <input name="email" class="form-control" placeholder="E-mail" type="email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Sua senha</label>
+                                    <a class="" href="/recuperarsenha">Esqueceu?</a>                                    
+                                    <input name="password" class="form-control" placeholder="**********" type="password" required data-eye>
+                                </div>                                
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary" style="width: 178px;"> Login  </button>
+                                </div>    
+                                <h6 class="card-title mb-4 mt-1 text-center">Ainda nao tem conta? <a href="/registrar" class="text-center">Crie uma.</a> </h6>                                    
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <link rel="icon" href="data:,">
+            <title>Embaixada de Angola na Alemanha - Agendamentos</title>
+    </head>
+    <section layout:fragment="conteudo" style=" margin-bottom: 12%;">  
+        <div class="container" style="padding-top: 6%;">  
+
+            <div class="panel-heading" style="background-color: silver;">
+                <h4 class="panel-title aw-titulo-panel" style="background-color: silver; padding-bottom: 2%; padding-top: 1%; margin-left: 1%;">Recuperar senha...</h4>                
+            </div>               
+            <div>
+                <a th:href="@{/}" class="float-right text-right mb-3" >Voltar</a>  
+            </div>
+
+            <div class="card" style="margin-top: 5%; margin-bottom: 6%">
+                <article class="card-body">
+                    <form th:action="@{/sendpassword}" method="post" th:object="${correio}" novalidate>  
+                        <div class="form-group" >
+                            <label>Seu e-mail</label>
+                            <input name="email" class="form-control" placeholder="E-mail" type="email" style="width: 330px;" th:field="*{email}" required>
+                                <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}" style="color: red;"/>
+                                <div class="form-group" style="padding-top: 20px;">
+                                    <button type="submit" class="btn btn-primary" style="width: 178px;">Enviar</button>
+                                </div>   
+                        </div>
+                    </form> 
+                </article>
+            </div>
+
+            <div class="container" th:replace="mensagemok"></div>  
+            <div class="container" th:replace="mensagememailnaoencontrado"></div>  
+
+
+        </div>
+    </section>
+</html>

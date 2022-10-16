@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+    <head>
+        <link rel="icon" href="data:,">
+            <title>Cadastro de título</title>      
+
+            <link th:rel="stylesheet" th:href="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css}"/>
+            <link th:rel="stylesheet" th:href="@{assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css}"/>
+            <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+            <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
+            <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
+
+    </head>
+
+    <section layout:fragment="conteudo">                     
+        <div style="text-align: right; padding-right: 1%; padding-bottom: 3%">   
+            <h5 >Bem-Vindo, <span th:text="${userName}"></span></h5>
+            <a href="/sair" class="float-right text-center" >Sair</a>                         
+        </div>
+
+        <div class="container">
+            <div class="panel-heading" style="background-color: silver;">
+                <h4 class="panel-title aw-titulo-panel" style="background-color: silver; padding-bottom: 2%; padding-top: 1%; margin-left: 1%;">Fazer agendamento...</h4>                
+            </div>               
+            <div>
+                <a th:href="@{/}" class="float-right text-right mb-3" >Voltar</a>  
+            </div>
+            <div class="container card" style="margin-top: 1%">
+                <article class="card-body">
+                    <form class="form-horizontal" method="POST" th:action="@{/send-agendamento}" th:object="${agenda}">    <!--  th:object="${customer}" -->
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="services" class="col-sm-2 control-label mt-3">Servicos</label>
+                                <div class="row">
+
+                                    <div class="col-sm-4 ml-3"> 
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="inscricaoConsular">
+                                                <label class="form-check-label" for="inscricaoConsular">
+                                                    Inscrição Consular
+                                                </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="emissaoPassaporte">
+                                                <label class="form-check-label" for="emissaoPassaporte">
+                                                    Emissao de Passaporte
+                                                </label>
+                                        </div> 
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="salvoConduto">
+                                                <label class="form-check-label" for="salvoConduto">
+                                                    Salvo Conduto
+                                                </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4"> 
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="transcricaoNascimento">
+                                                <label class="form-check-label" for="transcricaoNascimento">
+                                                    Transcrição e Registo de Nascimento
+                                                </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="transcricaoCasamento">
+                                                <label class="form-check-label" for="transcricaoCasamento">
+                                                    Transcrição e Registo de Casamentos
+                                                </label>
+                                        </div>   
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="outros">
+                                                <label class="form-check-label" for="outros">
+                                                    Outros...
+                                                </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label">Data</label>
+                                <div class="col-sm-3">   
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" id="dataDiaMesAno" autocomplete="off" th:field="*{dataDiaMesAno}"/>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- th:field="*{name}" -->
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="time">Hora</label>
+                                <div class="col-sm-3"> 
+                                    <div class="input-group event_time" id="event_time">
+                                        <input type="text" id="time" th:field="*{timeHora}" class="form-control" />
+                                        <div class="input-group-addon input-group-append">
+                                            <div class="input-group-text">
+                                                <i class="fa-solid fa-clock"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary mt-2" style="width: 178px;">Agendar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </article>
+            </div>
+
+        </div>
+
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/assets/moment/moment.min.js}"></script>
+        <script th:src="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js}"></script>
+        <script th:src="@{assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js}"></script>
+        <script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+
+
+
+
+
+        
+        <script>
+            $('#event_time').datetimepicker({
+                "allowInputToggle": false,
+                "showClose": false,
+                "showClear": false,
+                "showTodayButton": false,
+                "format": "HH:mm:ss"
+            });
+        </script>
+        
+
+        
+
+
+
+
+
+        <script>
+            $('.input-group.date').datepicker({
+                autoclose: true,
+                todayHighlight: true,
+                language: 'br',
+                daysOfWeekDisabled: "0,6"
+            });
+        </script>
+
+    </section>
+</html>

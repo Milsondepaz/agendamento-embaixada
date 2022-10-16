@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <link rel="icon" href="data:,">
+            <title>Cadastro de título</title>
+    </head>    
+
+    <section layout:fragment="conteudo" style=" margin-bottom: 11%">
+        
+        
+        
+        <div style="text-align: right; padding-right: 1%; padding-bottom: 3%">   
+            <h5 >Bem-Vindo, <span th:text="${userName}"></span></h5>
+            <a href="/sair" class="float-right text-center" >Sair</a>                         
+        </div>
+        <div class=" container panel panel-default" style=" margin-top: 5%">
+            <div class="panel-heading" style="background-color: silver;">
+                <h4 class="panel-title aw-titulo-panel" style="background-color: silver; padding-bottom: 2%; padding-top: 1%; margin-left: 1%;">Agendamentos feito...</h4>                
+            </div>               
+            <div>
+                <a th:href="@{/}" class="float-right text-right mb-3" >Voltar</a>  
+            </div>           
+            <div class="panel-body" >
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class ="text-center col-md-1">#</th>
+                                <th>Servicos</th>
+                                <th class ="text-center col-md-2">Data</th>
+                                <th class ="text-center col-md-2">Hora</th>
+                                <th class ="text-center col-md-2">Status</th>
+                                <th class ="col-md-1"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each = "titulo: ${titulos}">
+                                <td class ="text-center col-md-1" th:text="${titulo.codigo}"></td>
+                                <td th:text="${titulo.descricao}"></td>
+                                <td class ="text-center" th:text="${{titulo.dataVencimento}}"></td>
+                                <td class ="text-right" th:text="|€ ${{titulo.valor}}|"></td>                           
+                                <td class="text-center" th:attr="data-role=${titulo.codigo}">
+                                    <span class="label" th:text="${titulo.status.descricao}"
+                                          th:classappend="${titulo.isPendente() ? 'label-danger' : 'label-success'}">                                          
+                                    </span>
+                                </td>
+
+                                <td class="text-center">
+
+                                    <a class="btn btn-link btn-xs" th:href="@{/{codigo}(codigo = ${titulo.codigo})}"
+                                       title="Editar" rel="tooltip" data-placement="top">                                   
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>      
+
+                                    <a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+                                       th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"
+                                       title="Excluir" rel="tooltip" data-placement="top">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+
+                                    <a class="btn btn-link btn-xs js-atualizar-status" th:if="${titulo.isPendente()}"
+                                       title="Receber" rel="tooltip" data-placement="top"
+                                       th:attr="data-codigo=${titulo.codigo}"
+                                       th:href="@{receber/{codigo}(codigo=${titulo.codigo})}">
+                                        <span class="glyphicon glyphicon-check"></span>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" th:if= "${#lists.isEmpty(titulos)}">Voce nao tem nenhum agendamento.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+            <div th:replace="DialogoConfirmacaoExclusao"></div>
+        </div>
+    </section>
+</html>
